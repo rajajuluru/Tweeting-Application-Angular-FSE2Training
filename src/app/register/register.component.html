@@ -1,0 +1,84 @@
+<app-header></app-header>
+<div id="booking" class="section">
+    <div class="section-center">
+      <div class="container">
+       <form  [formGroup]="registerform">
+        <div class="row">
+          <div class="booking-form">
+            
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <span class="form-label">Email Address<span style="color: red; font-weight: bold;">*</span></span>
+                    <input class="form-control" type="text"  formControlName="email"  placeholder="email">
+                  </div>
+                  <div *ngIf="registerform.controls.email.invalid && registerform.controls.email.touched"
+                  class="alert alert-danger">
+                  Enter a valid email id
+               </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <span class="form-label">Password<span style="color: red; font-weight: bold;">*</span></span>
+                    <input class="form-control" type="password" formControlName="password"  placeholder="Enter your password">
+                  </div>
+                  <div *ngIf="registerform.controls.password.invalid && registerform.controls.password.touched"
+                  class="alert alert-danger">
+                  Enter a password
+               </div>
+                </div>
+              
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <span class="form-label">First Name<span style="color: red; font-weight: bold;">*</span></span>
+                    <input class="form-control" type="text"   formControlName="firstName">
+                  </div>
+                  <div *ngIf="registerform.controls.firstName.invalid && registerform.controls.firstName.touched"
+                  class="alert alert-danger">
+                  Enter a firstName
+               </div>
+                </div>
+            
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <span class="form-label">Last Name<span style="color: red; font-weight: bold;">*</span></span>
+                    <input class="form-control" type="text"  formControlName="lastName">
+                  </div>
+                  <div *ngIf="registerform.controls.lastName.invalid && registerform.controls.lastName.touched"
+                  class="alert alert-danger">
+                  Enter lastname
+               </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <span class="form-label">mobile number<span style="color: red; font-weight: bold;">*</span></span>
+                   
+                    <input class="form-control" type="number" formControlName="mobilenumber">
+                  </div>
+                  <div *ngIf="registerform.controls.mobilenumber.invalid && registerform.controls.mobilenumber.touched"
+                  class="alert alert-danger">
+                  Enter mobile number without country code
+               </div>
+                </div>
+           
+              </div>
+           
+              <div class="row " >
+                <div class="col-md-6">
+                    <div class="form-btn">
+                      <button class="submit-btn" type="button" [disabled]="registerform.invalid" (click)="onregister()" >Register</button>
+                    </div>
+                  </div>
+              </div>
+            
+          </div>
+        </div>
+ 
+       </form>  
+        </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,155 @@
+<app-header></app-header>
+<div class="section" id="booking">
+    
+<div class="container" style="background-color:#22DA70;">
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tweet message</th>
+            <th scope="col">User</th>
+            <th scope="col">Action</th>
+        
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of tweetdetails;let i=index;">
+            <td>{{i+1}}</td>
+            <td >{{data.message}}</td>
+            <td >{{data.userEmail}}</td>
+            <td>
+
+                <button class="btn btn-primary" data-toggle="modal"  data-target="#replies" (click)="modalupdatehelper(data.tweetId);">Re-Tweets</button> &nbsp;&nbsp;
+               
+                <button class="btn btn-danger" data-toggle="modal"  data-target="#likes" (click)="likesdata(data.tweetId);" >likes</button>
+           
+               &nbsp; &nbsp;
+              
+               
+               <button class="btn btn-primary" data-toggle="modal" data-target="#doreply"  (click)="getTweetIdForReply(data.tweetId);">do-Reply</button> &nbsp;&nbsp;
+              
+
+            <button class="btn btn-danger"    *ngIf="newfindlikeornotfunction(data.tweetId); else printVal;"   (click)="dislike(data.tweetId);" >DisLike</button> 
+          <ng-template #printVal>
+           
+            &nbsp; &nbsp;
+            <button class="btn btn-danger"    (click)="dolike(data.tweetId);"  >DoLike</button> 
+
+      </ng-template> 
+               
+              </td>
+            
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="modal fade" id="replies" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"  role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Replies</h5>
+              <button type="button" class="close" data-dismiss="modal" id="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <!-- <div class="container"> -->
+                <table class="table">
+                <tbody>
+                    <tr>
+                        <td>message</td>
+                      <td >replier UserName</td>
+                  
+                    </tr>
+                   <tr *ngFor="let data1 of replieduserArray[0];let i=index;">
+                      
+              <td>{{data1.message}}</td>
+
+              <td>{{data1.userEmail}}</td>
+                      
+                    </tr> 
+                  </tbody>
+                </table>
+    
+               <!-- </div> -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="doreply" tabindex="-1" role="dialog" aria-labelledby="doreplyexampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"  role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="doreplyexampleModalLabel">Reply</h5>
+              <button type="button" class="close" data-dismiss="modal" id="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Message</label>
+                  <input type="text" class="form-control" id="tweetmessage" placeholder="Reply Tweet">
+                </div>
+               <!-- </div> -->
+               <input type="hidden" id="tweetidforreply"  [value]="vartweetidforreply"/>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="closetweetreply" data-dismiss="modal">Close</button>
+
+          <button type="button" class="btn btn-secondary" (click)="submitReplyTweet();">submit</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="modal fade" id="likes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabellikes" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"  role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabellikes">likes</h5>
+              <button type="button" class="close" data-dismiss="modal" id="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <!-- <div class="container"> -->
+                <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                      <td >User Email</td>
+                  
+                    </tr>
+                   <tr *ngFor="let data10 of likedusersdata[0];let i=index;">
+                      
+              <td>{{data10.firstName}}</td>
+
+              <td>{{data10.email}}</td>
+                      
+                    </tr> 
+                  </tbody>
+                </table>
+    
+               <!-- </div> -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+</div>

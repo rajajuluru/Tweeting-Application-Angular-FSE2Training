@@ -1,0 +1,21 @@
+.section {
+	position: relative;
+	height: 100vh;
+	}
+
+.section .section-center {
+	position: absolute;
+	/* top: 50%; */
+	left: 0;
+	right: 0;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	padding-top: 38%;
+    }
+
+    @media only screen and (min-width: 300px){
+        #booking {
+         
+          padding-top: 10%;
+        } 
+    } 

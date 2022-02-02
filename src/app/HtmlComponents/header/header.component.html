@@ -1,0 +1,74 @@
+
+  
+  <nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark  " style="font-weight: bold;">
+    <a class="navbar-brand" href="#" style="color: yellow;  font-weight: bold;" >Tweeting App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/home" style="color:salmon; font-weight: bold;"  routerLinkActive="active">Home</a>
+        </li>
+        <li   class="nav-item">
+          
+          <a *ngIf="!loginStatus" class="nav-link" href="/login" style="color: green;">login</a>
+          <a *ngIf="loginStatus" class="nav-link" href="/logout" style="color: red;">logout</a>
+          
+         
+          
+        </li>
+        <li class="nav-item dropdown">
+         
+          <a  style="color:salmon; font-weight: bold;"  class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            User Actions 
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            
+            <a class="dropdown-item" style="color: purple; font-weight: bold;" href="/addTweet">Add Tweet</a>
+            <a class="dropdown-item" style="color: purple; font-weight: bold;" href="/viewTweets">viewTweets</a>
+            <a class="dropdown-item" style="color: purple; font-weight: bold;" href="/viewalltweets">All Tweets</a>
+           
+            <a class="dropdown-item" style="color: purple; font-weight: bold;" href="/discount">Manage discounts</a>
+            
+            <a class="dropdown-item" style="color: purple; font-weight: bold;" href="/viewBooking">View Booking</a>
+            
+            
+            
+          </div>
+        </li>
+       
+      
+        <li    class="nav-item"  *ngIf="name.length > 0">
+          
+          <p style="color: red; text-align: right;" class="nav-link">Welcome  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          
+          
+          <span  style="color: yellow;">
+           {{name}}
+          </span>
+          </p>
+           
+            
+          </li>
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+
+    
+    </div>
+  </nav>
+
+
+  
+
+
+
+
+
+
+
+

@@ -1,0 +1,83 @@
+<app-header></app-header>
+<div class="section" id="booking" style="padding-top: 5%;">
+  
+    <div class="container" >
+<div>
+    <div style="text-align: center; color:red; font-weight: bold; font-size: xx-large; padding-right: 10%;padding-top: 2%;">Do Booking </div>
+    
+<form [formGroup]="dobookingForm" >
+ <table class="table">
+     <tr style="font-weight: bold;">
+         <th style="color: seagreen;"> FlightId </th>
+         <td style="color: blueviolet;">{{localstoragebookingdata.flightId}}</td>
+         <th style="color: seagreen;"> From Location </th>
+         <td style="color: blueviolet;">{{localstoragebookingdata.flightsInventoryDetails.fromLocation}}</td>
+         <th style="color: seagreen;"> To Location </th>
+         <td style="color: blueviolet;">{{localstoragebookingdata.flightsInventoryDetails.toLocation}}</td>
+        
+     </tr>
+     <tr style="font-weight: bold;">
+        <th style="color: seagreen;"> AirLine Name </th>
+        <td style="color: blueviolet;">{{localstoragebookingdata.flightsInventoryDetails.airlineDetails.airLineName}}</td>
+        <th style="color: seagreen;"> price (per head) </th>
+        <td style="color: blueviolet;">{{localstoragebookingdata.flightsInventoryDetails.price}}</td>
+        <th style="color: seagreen;"> Journey Date </th>
+        <td style="color: blueviolet;">{{localstoragebookingdata.journeyDate}}</td>
+        
+     </tr>
+<tr style="font-weight: bold;">
+    <th style="color: seagreen;"> Flight Boarding time </th>
+        <td style="color: blueviolet;">{{localstoragebookingdata.onBoradingTime}}</td>
+        <th style="color: seagreen;"> Flight Departure time </th>
+        <td style="color: blueviolet;">{{localstoragebookingdata.departureTime}}</td>
+</tr>
+
+<tr style="font-weight: bold;">
+    <th>  </th>
+    <td></td>
+    
+    <td><p style="color: red;">Details</p></td>
+    <th> </th>
+    <td><span><button type="button" class="btn btn-primary" (click)="addPassengerForm();">Add</button></span></td>
+    
+ </tr>
+ </table>
+  
+<table class="table">
+
+    <tbody>
+
+        <div
+        formArrayName="detailsOfPassenger"
+        *ngFor="let skill of getpassengerdetailsform.controls; let i = index;"
+      >
+        <div [formGroupName]="i">
+        
+            <tr >   
+               
+                <th style="color: seagreen;" > Name </th>
+                <td style="color: blueviolet;"> <input type="text" class="form-control" formControlName="name"></td>
+                <th style="color: seagreen;"> Age </th>
+                <td><input type="number" class="form-control" formControlName="age"></td>
+                <th style="color: seagreen;"> Gender </th>
+                <td><input type="gender" class="form-control" formControlName="gender"> </td>
+                <td><span><button class="btn btn-danger" type="button" (click)="deletePassengerForm(i)"> Delete</button></span></td>
+
+             </tr>
+
+        
+        </div>
+     
+      </div>
+ 
+    </tbody>
+</table>
+
+<div style=" padding-top: 2%; text-align: center;" class="form-inline"><span style="padding-right:2% ; color: tomato; font-weight: bold;">CouponCode</span><input  class="form-control" type="text" formControlName="couponcode">
+   <div style="padding-left:2% ;"> <button class="btn btn-danger"  type="button" (click)="doBooking(localstoragebookingdata.flightId);">book</button></div>
+</div>  
+</form>
+</div>
+</div>
+</div>
+  

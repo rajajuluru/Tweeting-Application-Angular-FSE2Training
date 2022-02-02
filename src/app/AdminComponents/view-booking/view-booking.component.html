@@ -1,0 +1,93 @@
+<app-header></app-header>
+
+<div class="section" id="booking" style="padding-top: 5%;">
+  
+<div class="container" >
+    
+        <div style="text-align: center; color:red; font-weight: bold; font-size: xx-large; padding-right: 10%;">Booking History</div>
+
+      <div style="padding-top: 2%;">
+      
+      
+    
+<div  *ngFor="let item of bookingMasterDetailsData; let i=index;">
+    <div id="accordian">
+        <div class="card">
+            <div class="card-header" style="background-color:#1F618D ;">
+                <a class="card-link" 
+                   data-toggle="collapse"
+                   [href]="'#'+i" style="color:#2ECC71; text-decoration: none;"> 
+                PNR number----- {{item.booking_group_Id}}-------------Tickey Booked By User {{item.bookingmasterDetails.userid}}
+                 </a>
+            </div>
+
+            <div [id]="i" 
+                 class="collapse" 
+                 data-parent="#accordian">
+                <div class="card-body">
+                    <table class="table" [id]="item.booking_group_Id">
+                        <tr style="font-weight: bold;">
+                            <th style="color: seagreen;"> FlightId </th>
+                            <td style="color: blueviolet;">{{item.flightId}}</td>
+                            <th style="color: seagreen;"> From Location </th>
+                            <td style="color: blueviolet;">{{item.bookingmasterDetails.flightSchduleMasterDetails.flightsInventoryDetails.fromLocation}}</td>
+                            <th style="color: seagreen;"> To Location </th>
+                            <td style="color: blueviolet;">{{item.bookingmasterDetails.flightSchduleMasterDetails.flightsInventoryDetails.toLocation}}</td>
+                           
+                        </tr>
+                        <tr style="font-weight: bold;">
+                            
+                            <th style="color: seagreen;"> Ticket Fare </th>
+                            <td style="color: blueviolet;">{{item.ticketFare | currency:'INR'}}</td>
+                           
+                            <th style="color: seagreen;"> AirLine Name </th>
+                            <td style="color: blueviolet;">{{item.bookingmasterDetails.flightSchduleMasterDetails.flightsInventoryDetails.airlineDetails.airLineName}}</td>
+                            
+                            <th style="color: seagreen;"> Passenger Name </th>
+                            <td style="color: blueviolet;">{{item.p_name}}</td>
+                           
+                           
+                        </tr>
+
+                        <tr style="font-weight: bold;">
+                            <th style="color: seagreen;"> Passenger Age </th>
+                            <td style="color: blueviolet;">{{item.age}}</td>
+                            <th style="color: seagreen;"> Passenger Gender </th>
+                            <td style="color: blueviolet;">{{item.p_gender}}</td>
+                            <th style="color: seagreen;"> Journey Date </th>
+                            <td style="color: blueviolet;">{{item.bookingmasterDetails.flightSchduleMasterDetails.journeyDate | date:'longDate'}}</td>
+                        </tr>
+                        
+                        <tr style="font-weight: bold;">
+                            <th style="color: seagreen;">  </th>
+                            <td style="color: blueviolet;"></td>
+                            <th style="color: seagreen;"> Ticket Status </th>
+                            <td style="color: blueviolet;"><span *ngIf="item.ticketStatus==0">success</span>
+                                <span *ngIf="item.ticketStatus==1">canceled</span>
+                                <span *ngIf="item.ticketStatus==2">canceled by Admin</span>
+                            </td>
+                            <th style="color: seagreen;">  </th>
+                            <td style="color: blueviolet;"></td>
+                        </tr>
+                        </table>
+                     
+
+                        
+                    
+
+                        <div style="text-align: center;" >
+                            <button class="btn btn-warning" (click)="downloadPDF(item.booking_group_Id);">download</button>
+                        </div>
+                      
+                </div>
+            </div>
+        </div></div>
+      </div>
+      
+      
+
+
+<div>
+
+
+  </div> </div>

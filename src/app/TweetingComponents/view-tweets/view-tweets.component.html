@@ -1,0 +1,109 @@
+<app-header></app-header>
+<div class="section" id="booking">
+    
+<div class="container" style="background-color:#22DA70;">
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">message</th>
+            <th scope="col">tagged users</th>
+            <th scope="col">liked users</th>
+            <th scope="col">Action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of tweetdetailsforUser;let i=index;">
+            <td>{{i+1}}</td>
+            <td >{{data.message}}</td>
+            <td >{{data.tagUsers}}</td>
+            <td ><button class="btn btn-primary" data-toggle="modal" (click)="likesdata(data.tweetId);" data-target="#likes">Replies</button></td>
+            <td>
+                <button class="btn btn-primary" data-toggle="modal" (click)="modalupdatehelper(data.tweetId);" data-target="#replies">Replies</button> &nbsp;&nbsp;
+                <button class="btn btn-danger" (click)="deleteTweet(data.tweetId);">Delete</button>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="modal fade" id="replies" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"  role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Replies</h5>
+              <button type="button" class="close" data-dismiss="modal" id="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <!-- <div class="container"> -->
+                <table class="table">
+                <tbody>
+                    <tr>
+                        <td>message</td>
+                      <td >replier UserName</td>
+                  
+                    </tr>
+                    <tr *ngFor="let data1 of replieduserArray[0];let i=index;">
+                      
+              <td>{{data1.message}}</td>
+
+              <td>{{data1.userEmail}}</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+    
+               <!-- </div> -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal fade" id="likes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabellikes" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered"  role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabellikes">likes</h5>
+              <button type="button" class="close" data-dismiss="modal" id="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <!-- <div class="container"> -->
+                <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                      <td >User Email</td>
+                  
+                    </tr>
+                   <tr *ngFor="let data10 of likedusersdata[0];let i=index;">
+                      
+              <td>{{data10.firstName}}</td>
+
+              <td>{{data10.email}}</td>
+                      
+                    </tr> 
+                  </tbody>
+                </table>
+    
+               <!-- </div> -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+</div>

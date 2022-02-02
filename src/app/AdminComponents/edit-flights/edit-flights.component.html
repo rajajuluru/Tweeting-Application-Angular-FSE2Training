@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="jumbotron container " >
+   <div style="padding-top: 2%;"> <form  [formGroup]="addFlightsForm">
+    <div style="text-align: center; font-weight: bold; "><p class="text-danger">Edit Flights</p></div>
+        <table class="table " style="padding-left: 0%;text-align: center;">
+          
+            <tbody  >
+              <tr >
+                <th scope="row" >From Location</th>
+                <td><input type="text" class="form-control" placeholder="Airline name"  formControlName="fromLocation" required></td>
+              </tr>
+              <tr>
+                <th scope="row">To Location</th>
+                <td><input type="text" class="form-control" placeholder="Airline description"  formControlName="toLocation"  required></td>
+              </tr>
+              <tr>
+                <th scope="row" >Airlines</th>
+                <td>
+                     <select class="form-control"  formControlName="airLineId"
+                     >
+                     
+                       <option value={{air.airLineId}} text={{air.airLineName}} *ngFor="let air of filteredAirLinedata">open</option>
+                     
+                       
+                     </select> 
+
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Seats Count</th>
+                <td><input type="number"  class="form-control"  placeholder="no of seats"  formControlName="seatsCount"  required></td>
+              </tr>
+              <tr>
+                <th scope="row">Price</th>
+                <td><input type="number"  class="form-control" placeholder="price"  formControlName="price"  required></td>
+              </tr>
+              <tr>
+                <th scope="row">Flight Status</th>
+                <td>
+                    <select  class="form-control" formControlName="lockstatus"
+                     >
+                       
+                       <option value="0">open</option>
+                       <option value="1">lock</option>
+                       
+                     </select>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+       <div class="" style="padding-left: 40%;">
+         
+        <button type="button" class="btn btn-success" [disabled]="addFlightsForm.invalid"  (click)="updateFlightDetails();">Submit Details</button>
+              
+       </div>
+        </form>
+
+      </div>      </div>
