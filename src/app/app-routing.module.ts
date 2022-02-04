@@ -30,7 +30,7 @@ const routes: Routes = [{path:'home',component:HomeComponent},{path:'login',comp
 {path:'editAirLine/:id',component:EditAirLineComponent},{path:'logout',component:LogoutComponent},{path:'redirect',redirectTo:''},{path:'refresh',component:AppComponent},{path:'loginRefresh',redirectTo:'/home',pathMatch:'full'}
 ,{path:'AdminFlights',component:FlightsComponent,canActivate:[AdminGuardGuard]},{path:'editflight',component:EditFlightsComponent,canActivate:[AdminGuardGuard]},{path:'AdminScheduleFlights',component:ScheduleFlightComponent,canActivate:[AdminGuardGuard]}
 ,{path:'search',component:SearchFlightComponent,canActivate:[UserGaurdGuard]},{path:'book/:id',component:BookFlightComponent},
-{path:'ticketHistory',component:UserTicketHistoryComponent,canActivate:[UserGaurdGuard]},{path:'discount',component:DiscountComponent,canActivate:[AdminGuardGuard]},{path:'viewBooking',component:ViewBookingComponent,canActivate:[AdminGuardGuard]},{path:'viewMyTweets',component:ViewTweetsComponent},{path:'viewalltweets',component:ViewAllTweetsComponent}];
+{path:'ticketHistory',component:UserTicketHistoryComponent,canActivate:[UserGaurdGuard]},{path:'discount',component:DiscountComponent,canActivate:[AdminGuardGuard]},{path:'viewBooking',component:ViewBookingComponent,canActivate:[AdminGuardGuard]},{path:'viewMyTweets',component:ViewTweetsComponent,canActivate:[UserGaurdGuard]},{path:'viewalltweets',component:ViewAllTweetsComponent,canActivate:[UserGaurdGuard]}];
 
 
 

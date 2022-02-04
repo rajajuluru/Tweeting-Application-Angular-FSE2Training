@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   LoginResponseHelperClass=new JWTResponseHelperClass(false,"");;
   UserDeatialsResponseClass=new ReponseHelpeClassMaster(false,"");
   public loginhelperclass:LoginRequestHelperClass=new LoginRequestHelperClass("","");  
-  public res:JWTResponseHelperClass =new JWTResponseHelperClass(false,"");
+  public res:ReponseHelpeClassMaster =new ReponseHelpeClassMaster(false,"");
   public userdetalsmodel:UserDeatilsClass=new UserDeatilsClass("","");
   onloginsubmit()
   {
@@ -46,8 +46,8 @@ console.log(this.res);
 if(this.res.status)
 {
   this.router.navigate(['/home'], { relativeTo: this.route })
-  Swal.fire(this.res.jwtToken);
-   localStorage.setItem('jwttoken','cts'+this.res.jwtToken );
+  Swal.fire(this.res.data);
+   localStorage.setItem('jwttoken','cts'+this.res.data );
    localStorage.setItem('userid',login.username);
   Swal.fire("successfully logged in");
    console.log(localStorage.getItem('jwttoken')+"jwt token in local storage");
@@ -55,7 +55,7 @@ if(this.res.status)
 }
 else
 {
-Swal.fire(this.res.jwtToken);
+Swal.fire(this.res.data);
 }
 
 });

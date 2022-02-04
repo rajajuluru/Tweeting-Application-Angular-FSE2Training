@@ -37,6 +37,7 @@ doAddTweetApiCall(): void {
     console.log(JSON.stringify(this.tweetdata)+"in doAddTweetApiCall condition");
     this.res=data;
     console.log(JSON.stringify(this.res)+"res info from server");
+    this.router.navigate(['/viewMyTweets']);
    });
 }
 

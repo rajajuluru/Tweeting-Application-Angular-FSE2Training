@@ -10,6 +10,7 @@
             <th scope="col">Tweet message</th>
             <th scope="col">User</th>
             <th scope="col">Action</th>
+
         
             
           </tr>
@@ -36,6 +37,10 @@
            
             &nbsp; &nbsp;
             <button class="btn btn-danger"    (click)="dolike(data.tweetId);"  >DoLike</button> 
+            &nbsp; &nbsp;  
+            
+            <button class="btn btn-danger" *ngIf="taggedornot(data.tweetId);"     >you are Tagged </button> 
+          
 
       </ng-template> 
                

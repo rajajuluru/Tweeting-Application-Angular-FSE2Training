@@ -33,7 +33,7 @@ export class ViewAllTweetsComponent implements OnInit {
     this.restServices.getAllUsersTweets().subscribe((data5)=>{
       console.log(JSON.stringify(data5)+"JSON.stringify(data5)");
       this.tweetdetails = data5.data;
-      
+      this.router.navigate(["/viewalltweets"]);
       });
   }
 
@@ -100,6 +100,47 @@ export class ViewAllTweetsComponent implements OnInit {
        }
 
       }
+
+
+      taggedornot(tweetidfromhtml:string):any {
+        try {
+          
+         for (let i = 0; i < this.tweetdetails.length; i++) {
+           console.log(this.tweetdetails[i]+"tweetdetailstweetdetails");
+           if(this.tweetdetails[i].tweetId==tweetidfromhtml)
+           {
+             try {
+               for(let j=0;j<this.tweetdetails[i].tagUsers.length;j++)
+             {
+               if(this.tweetdetails[i].tagUsers[j]==localStorage.getItem("userid"))
+               {
+                 return true;
+               }else
+               {
+                 return false;
+               }
+
+
+
+             }
+               
+             } catch (error) {
+               console.log(error+"inside catch");
+ 
+               return false;
+               
+             }
+           }
+         }
+        } catch (error) {
+         console.log(error+"outside catch");
+               
+          return false;
+        }
+ 
+       }
+
+
       dolike(tweetidfromhtml:string){
       
         this.restServices.doLikeATweet(tweetidfromhtml).subscribe(()=>{

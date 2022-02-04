@@ -14,6 +14,7 @@ import { Bookinghelper } from './HelperClasses/bookinghelper';
 import { DiscountMasterClass } from './models/discount-master-class';
 import { Tweetdetails } from './models/tweetdetails';
 import { ReplyTweetDetails } from './models/reply-tweet-details';
+import { Validitytokencheck } from './models/validitytokencheck';
 
 @Injectable({
   providedIn: 'root'
@@ -23,16 +24,19 @@ export class RestApiServicesService {
 //private LoginURl='http://ec2-18-218-225-1.us-east-2.compute.amazonaws.com:8075'
 private LoginURl='http://localhost:8888/tweetapp/api/v1.0/tweets'
 private authenticate='http://localhost:8888/authenticate';
+private validitycheck='http://localhost:8888';
+responsedatafortoken :ReponseHelpeClassMaster=new ReponseHelpeClassMaster(false,"");
+
   constructor(private http:HttpClient) {
     
    }
 
   
 
-   doLogin(logindata:any):Observable<JWTResponseHelperClass>
+   doLogin(logindata:any):Observable<ReponseHelpeClassMaster>
    {
      console.log(logindata);
-       return this.http.post<JWTResponseHelperClass>(this.authenticate,logindata);
+       return this.http.post<ReponseHelpeClassMaster>(this.authenticate,logindata);
    }
 
    
@@ -432,6 +436,54 @@ console.log('jwttoken'+localStorage.getItem('jwttoken')+'jwttoken'+localStorage.
  })
          });
 }
+
+doCheckValidJWTtoken():Observable<ReponseHelpeClassMaster>
+{
+console.log("inside doCheckValidJWTtoken api call");
+let checktoken:Validitytokencheck=new Validitytokencheck("","");
+checktoken.token=localStorage.getItem('jwttoken');
+checktoken.userid=localStorage.getItem('userid');
+
+
+console.log(JSON.stringify(checktoken)+" check token in check methdo");
+
+    return this.http.post<ReponseHelpeClassMaster>(this.validitycheck+'/validateTokenByRestApi',checktoken,{
+     headers: new HttpHeaders({ 
+       Authorization: ''+localStorage.getItem('jwttoken') 
+ })
+         });
+}
+
+
+
+
+doCheckValidJWTtoken1()
+{
+console.log("inside doCheckValidJWTtoken api call");
+let checktoken:Validitytokencheck=new Validitytokencheck("","");
+checktoken.token=localStorage.getItem('jwttoken');
+checktoken.userid=localStorage.getItem('userid');
+
+
+
+console.log(JSON.stringify(checktoken)+" check token in check methdo");
+
+    return this.http.post<ReponseHelpeClassMaster>(this.validitycheck+'/validateTokenByRestApi',checktoken,{
+     headers: new HttpHeaders({ 
+     //  Authorization: ''+localStorage.getItem('jwttoken') 
+ })
+         }).subscribe((data2)=>{
+          console.log(JSON.stringify(data2)+"data2data2data2");
+          this.responsedatafortoken=data2;
+          console.log(JSON.stringify(this.responsedatafortoken)+"this.responsedatafortoken");
+         // return responsedatafortoken;
+        
+           });
+  
+      
+        
+}
+
 
 
 
