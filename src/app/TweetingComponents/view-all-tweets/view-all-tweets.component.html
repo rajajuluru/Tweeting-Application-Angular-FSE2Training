@@ -37,12 +37,13 @@
            
             &nbsp; &nbsp;
             <button class="btn btn-danger"    (click)="dolike(data.tweetId);"  >DoLike</button> 
-            &nbsp; &nbsp;  
-            
-            <button class="btn btn-danger" *ngIf="taggedornot(data.tweetId);"     >you are Tagged </button> 
+           
           
 
       </ng-template> 
+      &nbsp; &nbsp;  
+            
+      <button class="btn btn-danger" *ngIf="taggedornot(data.tweetId);"     >you are Tagged </button> 
                
               </td>
             
