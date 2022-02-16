@@ -21,10 +21,14 @@ import { Validitytokencheck } from './models/validitytokencheck';
 })
 export class RestApiServicesService {
 //private LoginURl='http://localhost:9999/api/v1.0/tweets';
-//private LoginURl='http://ec2-18-218-225-1.us-east-2.compute.amazonaws.com:8075'
-private LoginURl='http://localhost:8888/tweetapp/api/v1.0/tweets'
-private authenticate='http://localhost:8888/authenticate';
-private validitycheck='http://localhost:8888';
+private LoginURl='http://ec2-52-23-183-186.compute-1.amazonaws.com:8888/tweetapp/api/v1.0/tweets'
+//private LoginURl='http://localhost:8888/tweetapp/api/v1.0/tweets'
+//private authenticate='http://localhost:8888/authenticate';
+private authenticate='http://ec2-52-23-183-186.compute-1.amazonaws.com:8888/authenticate';
+//private validitycheck='http://localhost:8888';
+private validitycheck='http://ec2-52-23-183-186.compute-1.amazonaws.com:8888';
+
+
 responsedatafortoken :ReponseHelpeClassMaster=new ReponseHelpeClassMaster(false,"");
 
   constructor(private http:HttpClient) {
